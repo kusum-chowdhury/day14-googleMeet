@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="http://localhost:3030/public/styles.css">
+    <link rel="stylesheet" href="http://localhost:3001/public/styles.css">
     <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.3.1/peerjs.min.js.map"></script>
     <script src="/socket.io/socket.io.js"></script>
@@ -32,7 +31,7 @@
                     <h4 class="modal-title">Invite People</h4>
                 </div>
                 <div class="modal-body">
-                    <p id="roomid"><strong><%= roomid %></strong></p>
+                    <p id="roomid"><strong><%= roomid %></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-white" onclick="cancel()">Close</button>
@@ -53,7 +52,7 @@
                         <i class="fas fa-microphone-slash"></i>
                         <span>Mute</span>
                     </div>
-
+                    
                     <div class="main_controls_button" id="video" onclick="VideomuteUnmute()">
                         <i class="fas fa-video-slash"></i>
                         <span>Stop Video</span>
@@ -67,6 +66,7 @@
                     <div class="main_controls_button">
                         <i class="fas fa-user-friends"></i>
                         <span>Participants</span>
+                        
                 </div>
                 <div class="main_controls_block">
                     <div class="main_controls_button leave_red">
@@ -75,9 +75,9 @@
                 </div>
             </div>
         </div>
-        
+   
     </div>
-    <script src="http://localhost:3000/public/main.js"></script>
+    <script src="http://localhost:3001/public/main.js"></script>
 </body>
 
 </html>

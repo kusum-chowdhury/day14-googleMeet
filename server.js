@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 
-const PORT = 3000;
+const PORT = 3001;
 const server = require("http").Server(app);
 const { v4: uuidv4 } = require("uuid");
 const io = require("socket.io")(server);
@@ -32,6 +32,7 @@ app.get("/join", (req, res)=> {
 app.get("/joinold", (req, res) => {
     res.redirect(
         url.format({
+            //?
             pathname: req.query.meeting_id,
             query: req.query,
         })
@@ -48,7 +49,7 @@ io.on("connection", (socket)=> {
         socket.to(roomid).broadcast.emit("user-connected", id, myname);
 
         socket.on("tellName", (myname)=> {
-            socket.to(roomid).broadcast.emit("AddName", id, myname);
+            socket.to(roomid).broadcast.emit("AddName", myname);
         });
         socket.on("disconnect", ()=> {
             socket.to(roomid).broadcast.emit("user-disconnected", id);
@@ -57,3 +58,5 @@ io.on("connection", (socket)=> {
 })
 
 server.listen(PORT);
+
+

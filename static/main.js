@@ -1,8 +1,8 @@
 
  const socket = io("/");
- const main_chat_window = document.getElementById("main_chat_window");
+ const main__chat__window = document.getElementById("main__chat__window");
  const videoGrids = document.getElementById("video-grids");
- const myVideo = document.getElementById("video");
+ const myVideo = document.createElement("video");
  const chat = document.getElementById("chat");
 
  OtherUsername = "";
@@ -17,7 +17,7 @@
  var peer = new Peer(undefined, {
     path: "/peerjs",
     host: "/",
-    port: "3000"
+    port: "3001"
  });
 
  let myVideoStream;
@@ -47,7 +47,7 @@
         call.answer(stream);
         const video = document.createElement("video");
         call.on("stream", (remoteStream)=> {
-            addVideoStream(video, remoteStream, "Yogesh");
+            addVideoStream(video, remoteStream, OtherUsername);
         })
     })
  })
@@ -70,8 +70,8 @@
     }
  }
 
- const connectToNewUser = (userId, stream, myname)=> {
-    const call = peer.call(userId, stream);
+ const connectToNewUser = (userId, streams, myname)=> {
+    const call = peer.call(userId, streams);
     const video = document.createElement("video");
     call.on("stream", (userVideoStream)=> {
         addVideoStream(video, userVideoStream, myname);
@@ -96,7 +96,7 @@
     const videoGrid = document.createElement("div")
     videoGrid.classList.add("video-grid");
     videoGrid.appendChild(h1);
-    videoGrid.appendChild(videoGrid);
+    videoGrids.appendChild(videoGrid);
     videoGrid.append(videoEl);
 
     RemoveUnusedDivs();
